@@ -1,0 +1,137 @@
+
+% Packages
+\usepackage[spanish]{babel}
+\usepackage{hyperref}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage[most]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{makecell}
+\usepackage{accsupp}
+\usepackage{enumitem}
+\usepackage{slides-theme/theme}
+\usepackage{array}
+\usepackage{attachfile2}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepgfplotslibrary{groupplots}
+\usetikzlibrary{positioning}
+\pgfplotsset{compat=1.18}
+% Configurations
+\setbeamertemplate{caption}[numbered]
+\def\labelitemi{$\bullet$}
+\def\labelitemii{$\bullet$}
+\def\labelitemiii{$\bullet$}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\lstlistingname{Código}
+\setlist[itemize]{align=parleft,left=0.5em..1.5em}
+\hypersetup{pdfencoding=auto}
+\hypersetup{colorlinks}
+\hypersetup{linkcolor=cyan}
+\hypersetup{urlcolor=cyan}
+\graphicspath{{slides-theme/logos/}}
+\attachfilesetup{
+    icon=Paperclip,
+    mimetype=text/plain
+}
+\newcommand{\ohref}[2]{%
+    \begingroup%
+    \hypersetup{urlcolor=.}%
+    \href{#1}{\color{.}#2}%
+    \endgroup%
+}
+\AtBeginDocument{
+  \begin{frame}
+    \maketitle  
+  \end{frame}
+  \begin{frame}{Índice}
+      \tableofcontents
+  \end{frame}
+}
+\AtEndDocument{
+  \begin{frame}
+    \label{lastframe}
+    \usebeamertemplate{endpage}
+  \end{frame}
+}
+\makeatletter
+\newcommand\appendtographicspath[1]{%
+  \g@addto@macro\Ginput@path{#1}%
+}
+\makeatother
+\newtcolorbox{blockquote}{colback=block-gray,grow to right by=-1mm,grow to left by=-1mm,boxrule=0pt,boxsep=0pt,breakable}
+
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+
+\lstset{
+    inputencoding=utf8,
+    extendedchars=true,
+    literate=%
+    {á}{{\'a}}1
+    {é}{{\'e}}1
+    {í}{{\'i}}1
+    {ó}{{\'o}}1
+    {ú}{{\'u}}1
+    {Á}{{\'A}}1
+    {É}{{\'E}}1
+    {Í}{{\'I}}1
+    {Ó}{{\'O}}1
+    {Ú}{{\'U}}1
+    {ñ}{{\~n}}1
+    {Ñ}{{\~N}}1
+}
+\lstset{
+    basicstyle=\small\ttfamily,
+    backgroundcolor=\color{gray!10},
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!40!black},
+    stringstyle=\color{red},
+    rulecolor=\color{gray},
+    frame=single,
+    framerule=0pt,
+    framesep=2pt,
+    captionpos=b,
+    aboveskip=10pt,
+    belowskip=5pt,
+    columns=fullflexible,
+    keepspaces=true,
+    numberstyle=\tiny\color{gray},
+    numbers=left,
+    stepnumber=1,
+    numbersep=5pt,
+    showstringspaces=false,
+}
+\lstdefinestyle{bashstyle}{
+    language=bash
+}
+\lstnewenvironment{bashcode}{\lstset{style=bashstyle}}{}
+\lstdefinestyle{pythonstyle}{
+    language=python
+}
+\lstnewenvironment{pythoncode}{\lstset{style=pythonstyle}}{}
+\lstdefinestyle{javastyle}{
+    language=java
+}
+\lstnewenvironment{javacode}{\lstset{style=javastyle}}{}
+\lstdefinestyle{xmlstyle}{
+    language=xml
+}
+\lstnewenvironment{xmlcode}{\lstset{style=xmlstyle}}{}
+\lstdefinestyle{plainstyle}{
+}
+\lstnewenvironment{plaincode}{\lstset{style=plainstyle}}{}
+
+\definecolor{utfsmred}{RGB}{214,0,25}
+\definecolor{utfsmblue}{RGB}{0,75,133}
+
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+\addto\captionsenglish{\renewcommand{\tablename}{Table}}
+
+\input{class}
