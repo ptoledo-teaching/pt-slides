@@ -294,7 +294,7 @@
 
 % Beamer customizations
 \AtBeginDocument{
-    \setlength{\leftmargini}{3em}
+    \setlength{\leftmargini}{0.5cm}
     \setlength{\leftmarginii}{1.1em}
     \setlength{\leftmarginiii}{1.1em}
     \setlength{\leftmarginiv}{1.1em}
