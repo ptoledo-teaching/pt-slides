@@ -30,27 +30,23 @@
 % Fonts
 \setbeamerfont{title}{
     size=\Large,
-    shape=\bfseries
+    series=\bfseries
 }
 \setbeamerfont{titlesub}{
     size=\large,
-    shape=\normalfont
+    series=\normalfont
 }
 \setbeamerfont{details}{
+    size=\scriptsize,
+    series=\normalfont
+}
+\setbeamerfont{authors}{
     size=\footnotesize,
-    shape=\normalfont
+    series=\normalfont
 }
 \setbeamerfont{frametitle}{
     size=\large
 }
-% \setbeamerfont{block title}{
-%     size=\normalfont,
-%     shape=\strut
-% }
-% \setbeamerfont{blockdef}{
-%     size=\large,
-%     shape=\bfseries
-% } 
 \setbeamerfont{description item}{
     shape=\bfseries
 }
@@ -219,10 +215,12 @@
                     \pt@classcode\par%
                 \fi%
             \fi%
+            \usebeamerfont{authors}%
             \ifdefined\pt@authors%
                 \vspace{0.15cm}%
                 \titleauthorsnames{\newline}\par%
             \fi%
+            \usebeamerfont{details}%
             \ifdefined\pt@workgroup%
                 \def\pt@spacing{true}%
             \fi%
