@@ -93,7 +93,7 @@
                 \ -\ %
             \fi%
             \ifdefined\pt@version%
-                v\pt@version\ -\ %
+            v\pt@version\ -\ %
             \fi%
             [\parbox[t]{0.3cm}{\centering\insertframenumber}/\parbox[t]{0.3cm}{\centering\getrefnumber{lastframe}}]
             \hspace{0.5cm}
@@ -289,6 +289,30 @@
         \url{https://github.com/ptoledo-teaching/pt-slides}
     \end{textblock*}
 }
+% Show TOC
+\newif\ifpt@showtoc
+\pt@showtoctrue % Default: show TOC
+\newcommand\ptshowtoc{\pt@showtoctrue}
+\newcommand\pthidetoc{\pt@showtocfalse}
+\ptshowtoc
+% Show section
+\newif\ifpt@showsection
+\pt@showsectiontrue % Default: show section TOC
+\newcommand\ptshowsection{\pt@showsectiontrue}
+\newcommand\pthidesection{\pt@showsectionfalse}
+\ptshowsection
+% Show subsection
+\newif\ifpt@showsubsection
+\pt@showsubsectionfalse % Default: hide subsection TOC
+\newcommand\ptshowsubsection{\pt@showsubsectiontrue}
+\newcommand\pthidesubsection{\pt@showsubsectionfalse}
+\pthidesubsection
+% Show last frame
+\newif\ifpt@showlastframe
+\pt@showlastframetrue % Default: show last frame
+\newcommand\ptshowlastframe{\pt@showlastframetrue}
+\newcommand\pthidelastframe{\pt@showlastframefalse}
+\ptshowlastframe
 
 % Hooks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -312,23 +336,42 @@
         \textcolor{fg}{\rule{.625\textwidth}{.5pt}}%
     }
 }
-\AtBeginDocument{
+% Title page
+\AtBeginDocument{%
     \begin{frame}
         \maketitle
     \end{frame}
-    \begin{frame}{Índice}
-        \tableofcontents
-    \end{frame}
+    \ifpt@showtoc
+        \begin{frame}
+            \frametitle{Contenido}
+            \tableofcontents[hideallsubsections]
+        \end{frame}
+    \fi
 }
-\AtBeginSection[]{
-    \begin{frame}
-        \frametitle{Índice}
-        \tableofcontents[currentsection]
-    \end{frame}
+% TOC per section
+\AtBeginSection[]{%
+    \ifpt@showsection
+        \begin{frame}
+            \frametitle{Contenido}
+            \tableofcontents[currentsection, hideothersubsections]
+        \end{frame}
+    \fi
 }
-\AtEndDocument{
-    \begin{frame}
-        \usebeamertemplate{endpage}
-        \label{lastframe}
-    \end{frame}
+% TOC per subsection
+\AtBeginSubsection[]{%
+    \ifpt@showsubsection
+        \begin{frame}
+            \frametitle{Contenido}
+            \tableofcontents[currentsection, subsectionstyle=show/shaded/hide]
+        \end{frame}
+    \fi
+}
+% Final slide
+\AtEndDocument{%
+    \ifpt@showlastframe
+        \begin{frame}
+            \usebeamertemplate{endpage}
+            \label{lastframe}
+        \end{frame}
+    \fi
 }
