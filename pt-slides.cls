@@ -50,6 +50,10 @@
 \setbeamerfont{description item}{
     shape=\bfseries
 }
+\setbeamerfont{footnote}{
+    size=\scriptsize,
+    series=\normalfont
+}
 % Colors
 \setbeamercolor{structure}{fg=ptdarkblue}
 \setbeamercolor{normal text}{fg=ptdarkblue}
@@ -100,6 +104,13 @@
         \end{beamercolorbox}%
     }
     \vskip0pt
+}
+% Justified footnotes
+\setbeamertemplate{footnote}{
+    \noindent
+    \justifying
+    \insertfootnotemark
+    \insertfootnotetext\par
 }
 % Background image for content pages
 \newcommand\pt@backgroundcontent{
