@@ -20,7 +20,7 @@
 % Sizes
 \setbeamersize{
     text margin left    = .04\paperwidth,
-    text margin right   = .04\paperwidth,
+    text margin right   = .029\paperwidth,
     sidebar width left  = 0mm,
     sidebar width right = 32mm,
     description width   = 10mm,
