@@ -381,21 +381,15 @@
 }
 % TOC per section
 \AtBeginSection[]{%
-    \ifpt@showsection
-        \begin{frame}
-            \frametitle{Contenido}
-            \tableofcontents[currentsection, hideothersubsections]
-        \end{frame}
-    \fi
+    \ifpt@showsection%
+        \ptshowtocsection%
+    \fi%
 }
 % TOC per subsection
 \AtBeginSubsection[]{%
-    \ifpt@showsubsection
-        \begin{frame}
-            \frametitle{Contenido}
-            \tableofcontents[currentsection, subsectionstyle=show/shaded/hide]
-        \end{frame}
-    \fi
+    \ifpt@showsubsection%
+        \ptshowtocsubsection%
+    \fi%
 }
 % Final slide
 \AtEndDocument{%
