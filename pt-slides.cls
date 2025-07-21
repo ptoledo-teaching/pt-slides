@@ -369,14 +369,14 @@
 }
 % Title page
 \AtBeginDocument{%
-    \begin{frame}
-        \maketitle
-    \end{frame}
-    \ifpt@showtoc
-        \begin{frame}
-            \frametitle{Contenido}
-            \tableofcontents[hideallsubsections]
-        \end{frame}
+    \begin{frame}%
+        \maketitle%
+    \end{frame}%
+    \ifpt@showtoc%
+        \begin{frame}%
+            \frametitle{\pt@labeltoc}%
+            \tableofcontents[hideallsubsections]%
+        \end{frame}%
     \fi
 }
 % TOC per section
