@@ -393,10 +393,10 @@
 }
 % Final slide
 \AtEndDocument{%
-    \ifpt@showlastframe
-        \begin{frame}
-            \usebeamertemplate{endpage}
-            \label{lastframe}
-        \end{frame}
+    \ifpt@showlastframe%
+        \begin{frame}%
+            \usebeamertemplate{endpage}%
+            \label{lastframe}%
+        \end{frame}%
     \fi
 }
