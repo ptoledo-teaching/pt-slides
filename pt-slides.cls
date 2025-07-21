@@ -314,13 +314,25 @@
 \newcommand\ptshowtoc{\pt@showtoctrue}
 \newcommand\pthidetoc{\pt@showtocfalse}
 \ptshowtoc
-% Show section
+% Show section TOC
+\newcommand\ptshowtocsection{
+    \begin{frame}
+        \frametitle{Contenido}
+        \tableofcontents[currentsection, hideothersubsections]
+    \end{frame}
+}
 \newif\ifpt@showsection
 \pt@showsectiontrue % Default: show section TOC
 \newcommand\ptshowsection{\pt@showsectiontrue}
 \newcommand\pthidesection{\pt@showsectionfalse}
 \ptshowsection
-% Show subsection
+% Show subsection TOC
+\newcommand\ptshowtocsubsection{
+    \begin{frame}
+        \frametitle{\pt@labeltoc}
+        \tableofcontents[currentsection, subsectionstyle=show/shaded/hide]
+    \end{frame}
+}
 \newif\ifpt@showsubsection
 \pt@showsubsectionfalse % Default: hide subsection TOC
 \newcommand\ptshowsubsection{\pt@showsubsectiontrue}
