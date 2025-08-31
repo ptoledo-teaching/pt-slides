@@ -54,6 +54,7 @@
     size=\scriptsize,
     series=\normalfont
 }
+\renewcommand{\texttt}[1]{\inlinecode{#1}}
 % Colors
 \setbeamercolor{structure}{fg=ptdarkblue}
 \setbeamercolor{normal text}{fg=ptdarkblue}
