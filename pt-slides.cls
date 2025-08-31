@@ -154,11 +154,11 @@
         \end{tikzpicture}
     \fi
     \ifdefined\pt@logo%
-        \begin{textblock*}{10cm}(5.5cm, 6.1cm)%
-            \begin{minipage}[t][2cm][b]{\dimexpr\textwidth-2\fboxsep}%
+        \begin{textblock*}{3.25cm}(13cm, 0cm)%
+            \begin{minipage}[t][8.325cm][b]{\dimexpr\textwidth-2\fboxsep}%
+                \centering%
                 \setlength{\fboxsep}{0pt}%
-                \raggedleft
-                \includegraphics[height=2cm]{\pt@logo}%
+                \adjustbox{max width=2.0cm, max height=1.75cm, keepaspectratio}{\includegraphics{\pt@logo}}%
             \end{minipage}%
         \end{textblock*}%
     \fi
