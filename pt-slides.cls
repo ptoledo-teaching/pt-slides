@@ -301,14 +301,6 @@
         \url{https://github.com/ptoledo-teaching/pt-slides}
     \end{textblock*}
 }
-% Footnotes fix
-\newcommand\ptfootnotemark{%
-    % \addtocounter{footnote}{-1}%
-    \footnotemark
-}
-\newcommand\ptfootnotetext[1]{%
-    \footnotetext{#1}
-}
 % Show TOC
 \newif\ifpt@showtoc
 \pt@showtoctrue % Default: show TOC
