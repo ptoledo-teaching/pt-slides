@@ -54,6 +54,8 @@
     size=\scriptsize,
     series=\normalfont
 }
+\setlength{\abovecaptionskip}{0.25cm}
+\setlength{\belowcaptionskip}{0.25cm}
 % Colors
 \setbeamercolor{structure}{fg=ptdarkblue}
 \setbeamercolor{normal text}{fg=ptdarkblue}
