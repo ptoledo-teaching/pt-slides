@@ -1,18 +1,42 @@
-\ProvidesClass{pt-slides}[2021/07/01 v1.0 PT Slides Class]
+%%
+%% pt-slides.cls
+%% Slides document class for ptoledo-teaching
+%%
+%% Author: Pedro Toledo Correa
+%% Repo: https://github.com/ptoledo-teaching/pt-commons
+%% License: LaTeX Project Public License 1.3c or later
+%% Created: 2021-07-01
+%% Updated: 2025-10-18
+%% Version: v0.1
+%%
+%% -----------------------------------------------------------------
+%% This work may be distributed and/or modified under
+%% the conditions of the LaTeX Project Public License,
+%% version 1.3c or later. The latest version is available at:
+%%     https://www.latex-project.org/lppl.txt
+%% -----------------------------------------------------------------
+%%
+
 \NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{pt-slides}[2025/10/18 v0.1 PT Slides Class]
+\makeatletter
 
 % Class handling %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Pass user options to pt-commons
-\DeclareOption*{%
-    \PassOptionsToClass{\CurrentOption}{pt-commons}
-}
+% Declare language options for pt-commons
+\DeclareOption{spanish}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+\DeclareOption{english}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+\DeclareOption{portuguese}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+\DeclareOption{french}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+\DeclareOption{nominted}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+% Pass all other options to base beamer class
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{beamer}}
+% Default options
+\PassOptionsToClass{aspectratio=169,12pt}{beamer}
 \ProcessOptions\relax
-% Fixed options
-\PassOptionsToClass{aspectratio=169}{beamer}
-\PassOptionsToClass{12pt}{beamer}
+% Load base class
 \LoadClass{beamer}
-% Loading pt-commons
+% Load pt-commons package
 \RequirePackage{pt-commons}
 
 % Design %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -65,6 +89,18 @@
 
 % Elements %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Highlight box (beamer-compatible)
+\newenvironment{highlightbox}{%
+    \begin{tcolorbox}[
+            colback=ptblue!14,
+            colframe=ptblue,
+            boxrule=0.4pt,
+            arc=3pt,
+            outer arc=3pt
+        ]
+        }{
+    \end{tcolorbox}
+}
 % Remove logo
 \setbeamertemplate{logo}{}
 % Frame title
@@ -155,13 +191,15 @@
         \end{tikzpicture}
     \fi
     \ifdefined\pt@logo%
-        \begin{textblock*}{3.25cm}(13cm, 0cm)%
-            \begin{minipage}[t][8.325cm][b]{\dimexpr\textwidth-2\fboxsep}%
-                \centering%
-                \setlength{\fboxsep}{0pt}%
-                \adjustbox{max width=2.0cm, max height=1.75cm, keepaspectratio}{\includegraphics{\pt@logo}}%
-            \end{minipage}%
-        \end{textblock*}%
+        \ifx\pt@logo\empty\else%
+            \begin{textblock*}{3.25cm}(13cm, 0cm)%
+                \begin{minipage}[t][8.325cm][b]{\dimexpr\textwidth-2\fboxsep}%
+                    \centering%
+                    \setlength{\fboxsep}{0pt}%
+                    \adjustbox{max width=2.0cm, max height=1.75cm, keepaspectratio}{\includegraphics{\pt@logo}}%
+                \end{minipage}%
+            \end{textblock*}%
+        \fi%
     \fi
 }
 % Background template
@@ -295,12 +333,16 @@
         \usebeamerfont{title}
         \pt@labelquestions
     \end{minipage}
-    \begin{textblock*}{8.3cm}(0.54cm, 7.25cm)\tiny
-        \pt@labelbackgroundsource :\par                                      
-        \pt@backgroundcredit\par
-        \pt@labeltemplatecredit :\par
-        \url{https://github.com/ptoledo-teaching/pt-slides}
-    \end{textblock*}
+    \ifdefined\pt@background%
+        \begin{textblock*}{8.3cm}(0.54cm, 7.25cm)\tiny
+            \pt@labelbackgroundsource :\par%
+            \ifdefined\pt@backgroundcredit%
+                \pt@backgroundcredit\par%
+            \fi%
+            \pt@labeltemplatecredit :\par
+            \url{https://github.com/ptoledo-teaching/pt-slides}
+        \end{textblock*}%
+    \fi%
 }
 % Show TOC
 \newif\ifpt@showtoc
@@ -311,7 +353,7 @@
 % Show section TOC
 \newcommand\ptshowtocsection{
     \begin{frame}
-        \frametitle{Contenido}
+        \frametitle{\pt@labeltoc}
         \tableofcontents[currentsection, hideothersubsections]
     \end{frame}
 }
@@ -394,3 +436,7 @@
         \end{frame}%
     \fi
 }
+
+\makeatother
+
+\endinput
