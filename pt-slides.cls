@@ -89,18 +89,6 @@
 
 % Elements %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Highlight box (beamer-compatible)
-\newenvironment{highlightbox}{%
-    \begin{tcolorbox}[
-            colback=ptblue!14,
-            colframe=ptblue,
-            boxrule=0.4pt,
-            arc=3pt,
-            outer arc=3pt
-        ]
-        }{
-    \end{tcolorbox}
-}
 % Remove logo
 \setbeamertemplate{logo}{}
 % Frame title
