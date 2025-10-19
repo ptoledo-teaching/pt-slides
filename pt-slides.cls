@@ -80,6 +80,12 @@
 }
 \setlength{\abovecaptionskip}{0.25cm}
 \setlength{\belowcaptionskip}{0.25cm}
+\ifpt@useminted
+    \RequirePackage{minted}
+    \setminted{%
+        fontsize=\footnotesize%
+    }
+\fi
 % Colors
 \setbeamercolor{structure}{fg=ptdarkblue}
 \setbeamercolor{normal text}{fg=ptdarkblue}
