@@ -51,6 +51,7 @@
     mini frame size     = 10mm,
     mini frame offset   = 10mm
 }
+\setlength{\parindent}{0pt}
 % Fonts
 \setbeamerfont{title}{
     size=\Large,
