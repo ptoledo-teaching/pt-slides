@@ -133,7 +133,6 @@
             \hspace{0.5cm}
         \end{beamercolorbox}%
     }
-    \vskip0pt
 }
 % Justified footnotes
 \setbeamertemplate{footnote}{
@@ -187,7 +186,7 @@
             \begin{textblock*}{3.25cm}(13cm, 0cm)%
                 \begin{minipage}[t][8.325cm][b]{\dimexpr\textwidth-2\fboxsep}%
                     \centering%
-                    \setlength{\fboxsep}{0pt}%
+                    \setlength{\fboxsep}{0cm}%
                     \adjustbox{max width=2.0cm, max height=1.75cm, keepaspectratio}{\includegraphics{\pt@logo}}%
                 \end{minipage}%
             \end{textblock*}%
@@ -196,7 +195,7 @@
 }
 % Background template
 \setbeamertemplate{background}{
-    \ifnum\insertframenumber=1 %
+    \ifnum\insertframenumber=1%
         \pt@backgroundcover%
     \else
         \ifnum\insertframenumber=\getrefnumber{lastframe}%
@@ -209,7 +208,7 @@
 % Title page
 \setbeamertemplate{title page}{%
     \begin{textblock*}{10cm}(0.5cm,1.0cm)%
-        \setlength{\fboxsep}{0pt}%
+        \setlength{\fboxsep}{0cm}%
         \begin{minipage}[t][2cm][t]{\dimexpr\textwidth-2\fboxsep}%
             \raggedright%
             \usebeamerfont{title}%
@@ -238,7 +237,7 @@
         \end{minipage}%
     \end{textblock*}%
     \begin{textblock*}{10cm}(0.5cm,3.75cm)%
-        \setlength{\fboxsep}{0pt}%
+        \setlength{\fboxsep}{0cm}%
         \begin{minipage}[t][4cm][b]{\dimexpr\textwidth-2\fboxsep}%
             \raggedright%
             \usebeamertemplate{separator}\par%
