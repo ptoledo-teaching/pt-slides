@@ -43,15 +43,12 @@
 
 % Sizes
 \setbeamersize{
-    text margin left    = .04\paperwidth,
-    text margin right   = .029\paperwidth,
+    text margin left    = 0.5cm,
+    text margin right   = 0.5cm,
     sidebar width left  = 0mm,
-    sidebar width right = 32mm,
-    description width   = 10mm,
-    mini frame size     = 10mm,
-    mini frame offset   = 10mm
+    sidebar width right = 30mm,
 }
-\setlength{\parindent}{0pt}
+\setlength{\parindent}{0cm}
 % Fonts
 \setbeamerfont{title}{
     size=\Large,
@@ -395,7 +392,19 @@
     \setbeamertemplate{headline}{}
     \setbeamertemplate{separator}{%
         \usebeamercolor{separator}%
-        \textcolor{fg}{\rule{.625\textwidth}{.5pt}}%
+        \textcolor{fg}{\rule{.625\textwidth}{.015cm}}%
+    }
+    % Quotation
+    \renewenvironment{quotation}{%
+        \list{}{%
+            \leftmargin=0.75cm%
+            \rightmargin=0.75cm%
+            \parsep=0.25cm%
+            \itemindent=0cm%
+        }%
+        \item\relax\itshape\justifying%
+    }{%
+        \endlist%
     }
 }
 % Title page
