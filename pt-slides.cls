@@ -185,9 +185,8 @@
     \ifdefined\pt@logo%
         \ifx\pt@logo\empty\else%
             \begin{textblock*}{3.25cm}(13cm, 0cm)%
-                \begin{minipage}[t][8.325cm][b]{\dimexpr\textwidth-2\fboxsep}%
+                \begin{minipage}[t][8.325cm][b]{\dimexpr\textwidth}%
                     \centering%
-                    \setlength{\fboxsep}{0cm}%
                     \adjustbox{max width=2.0cm, max height=1.75cm, keepaspectratio}{\includegraphics{\pt@logo}}%
                 \end{minipage}%
             \end{textblock*}%
@@ -209,8 +208,7 @@
 % Title page
 \setbeamertemplate{title page}{%
     \begin{textblock*}{10cm}(0.5cm,1.0cm)%
-        \setlength{\fboxsep}{0cm}%
-        \begin{minipage}[t][2cm][t]{\dimexpr\textwidth-2\fboxsep}%
+        \begin{minipage}[t][2cm][t]{\dimexpr\textwidth-1cm}%
             \raggedright%
             \usebeamerfont{title}%
             \ifdefined\pt@title%
@@ -238,8 +236,7 @@
         \end{minipage}%
     \end{textblock*}%
     \begin{textblock*}{10cm}(0.5cm,3.75cm)%
-        \setlength{\fboxsep}{0cm}%
-        \begin{minipage}[t][4cm][b]{\dimexpr\textwidth-2\fboxsep}%
+        \begin{minipage}[t][4cm][b]{\dimexpr\textwidth}%
             \raggedright%
             \usebeamertemplate{separator}\par%
             \usebeamerfont{details}%
