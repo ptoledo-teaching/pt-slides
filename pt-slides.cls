@@ -431,6 +431,10 @@
         \ptshowtocsubsection%
     \fi%
 }
+% Table font size
+\AtBeginEnvironment{table}{
+    \small
+}
 % Final slide
 \AtEndDocument{%
     \ifpt@showlastframe%
