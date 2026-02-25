@@ -104,14 +104,13 @@
 % Frame footline
 \setbeamertemplate{footline}{
     \leavevmode
-    \hbox{%
-        \usebeamerfont{footline}%
-        \begin{beamercolorbox}[
-                wd=\textwidth,
-                ht=3ex,
-                dp=1.6ex
-            ]{footline}
-            \hspace{0.5cm}
+    \usebeamerfont{footline}%
+    \begin{beamercolorbox}[
+            wd=\textwidth,
+            ht=12pt
+        ]{footline}
+        \hspace{0.42cm}
+        \raisebox{4.6pt}{
             \ifdefined\pt@classcode%
                 \pt@classcode\ -
             \fi%
@@ -121,7 +120,9 @@
             \ifdefined\pt@title%
                 \pt@title
             \fi%
-            \hfill
+        }
+        \hfill
+        \raisebox{4.6pt}{
             \ifdefined\pt@authors%
                 \titleauthorsfooter{\ -\ }%
                 \ -\ %
@@ -130,9 +131,9 @@
             v\pt@version\ -\ %
             \fi%
             [\parbox[t]{0.3cm}{\centering\insertframenumber}/\parbox[t]{0.3cm}{\centering\getrefnumber{lastframe}}]
-            \hspace{0.5cm}
-        \end{beamercolorbox}%
-    }
+        }
+        \hspace{0.42cm}
+    \end{beamercolorbox}%
 }
 % Justified footnotes
 \setbeamertemplate{footnote}{
