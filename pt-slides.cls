@@ -6,8 +6,8 @@
 %% Repo: https://github.com/ptoledo-teaching/pt-commons
 %% License: LaTeX Project Public License 1.3c or later
 %% Created: 2021-07-01
-%% Updated: 2025-10-18
-%% Version: v0.1
+%% Updated: 2026-08-09
+%% Version: v0.2
 %%
 %% -----------------------------------------------------------------
 %% This work may be distributed and/or modified under
@@ -18,7 +18,7 @@
 %%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{pt-slides}[2025/10/18 v0.1 PT Slides Class]
+\ProvidesClass{pt-slides}[2026/08/09 v0.2 PT Slides Class]
 \makeatletter
 
 % Class handling %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -363,6 +363,23 @@
 \newcommand\ptshowsubsection{\pt@showsubsectiontrue}
 \newcommand\pthidesubsection{\pt@showsubsectionfalse}
 \pthidesubsection
+% Show a subsection TOC when one exists, otherwise show its section TOC.
+% This mode takes precedence over the independent section/subsection settings.
+\newif\ifpt@sectionorsubsection
+\pt@sectionorsubsectiontrue % Default: adapt the TOC slide to the section structure
+\newcommand\ptshowsectionorsubsection{\pt@sectionorsubsectiontrue}
+\newcommand\pthidesectionorsubsection{\pt@sectionorsubsectionfalse}
+% Subsections are recorded in the auxiliary file so the section hook knows
+% whether the current section contains any of them. As with a TOC, structural
+% changes can require an additional compilation.
+\newcommand\pt@sectionhassubsection[1]{%
+    \expandafter\gdef\csname pt@section@hassubsection@#1\endcsname{}%
+}
+\newcommand\pt@recordsectionsubsection{%
+    \protected@write\@auxout{}{%
+        \string\pt@sectionhassubsection{\number\c@section}%
+    }%
+}
 % Show last frame
 \newif\ifpt@showlastframe
 \pt@showlastframetrue % Default: show last frame
@@ -418,14 +435,26 @@
 }
 % TOC per section
 \AtBeginSection[]{%
-    \ifpt@showsection%
-        \ptshowtocsection%
+    \ifpt@sectionorsubsection%
+        \ifcsname pt@section@hassubsection@\number\c@section\endcsname%
+        \else%
+            \ptshowtocsection%
+        \fi%
+    \else%
+        \ifpt@showsection%
+            \ptshowtocsection%
+        \fi%
     \fi%
 }
 % TOC per subsection
 \AtBeginSubsection[]{%
-    \ifpt@showsubsection%
+    \pt@recordsectionsubsection%
+    \ifpt@sectionorsubsection%
         \ptshowtocsubsection%
+    \else%
+        \ifpt@showsubsection%
+            \ptshowtocsubsection%
+        \fi%
     \fi%
 }
 % Table font size

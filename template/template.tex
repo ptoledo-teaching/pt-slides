@@ -48,10 +48,14 @@
 \date{\today}
 
 % TOC Options (customize visibility of table of contents)
-\ptshowtoc        % Show TOC at beginning (default: true)
-\ptshowsection    % Show section TOC before each section (default: true)
-\pthidesubsection % Hide subsection TOC (default: false)
-\ptshowlastframe  % Show "Questions?" final slide (default: true)
+\ptshowtoc                 % Show TOC at beginning (default: true)
+\ptshowsectionorsubsection % Show subsection TOCs, or the section TOC when none exist (default: true)
+\ptshowlastframe           % Show "Questions?" final slide (default: true)
+
+% To use the independent section/subsection controls instead:
+% \pthidesectionorsubsection
+% \ptshowsection
+% \pthidesubsection
 
 \begin{document}
 
@@ -419,6 +423,7 @@ print(f"Fibonacci(10) = {result}")
         \item \inlinecode{\textbackslash{}pthidesection} - Ocultar TOC por sección
         \item \inlinecode{\textbackslash{}ptshowsubsection} - Mostrar TOC por subsección
         \item \inlinecode{\textbackslash{}pthidesubsection} - Ocultar TOC por subsección
+        \item \inlinecode{\textbackslash{}ptshowsectionorsubsection} - Mostrar subsecciones o, si no existen, la sección
         \item \inlinecode{\textbackslash{}ptshowlastframe} - Mostrar slide final
         \item \inlinecode{\textbackslash{}pthidelastframe} - Ocultar slide final
     \end{itemize}
